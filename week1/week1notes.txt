@@ -1,0 +1,266 @@
+today we start with C, mid-semester Python, then SQL then JS
+
+For ease of finding solutions to the questions asked, I am going to start including the questions and answers at the top of the notes file.
+
+*****************************
+PROBLEM SET
+*****************************
+MARIO:
+Implement a program that prints out a half-pyramid of a specified height, per the below.
+
+$ ./mario
+Height: 5
+    ##
+   ###
+  ####
+ #####
+######
+
+$ ./mario
+Height: 3
+  ##
+ ###
+####
+
+SOLUTION
+#include <stdio.h>
+#include <cs50.h>
+
+int main(void)
+{
+    int n;
+    do
+    {
+        n = get_int("Please enter a positive whole number less than 23: ");
+        /*
+        get_int is a method written by the faculty of cs50 to make it easier
+        for students to ask users for numerical input. It is evoked by the
+        include <cs50.h> call above
+        */
+    }
+    while( !(n >= 0 && n <= 23) ); // checking n less than 0 and n greater than/equal to 23 didn't work. I'm not sure why I have to do this but it works.
+
+    // loop to make a row
+    // this just controls the number of rows
+    for(int i = 1; i <= n; i++) //loop through the number of times requested
+    {
+        //loop to fill columns
+        // will need to make two # at the end of first row
+        // successively one more # for each row
+        // final row is all #
+        // the non-# characters in the row are spaces
+        for(int j = 0; j < (n - i); j++) //print a number of spaces that is value of the iteration subtracted from that iteration number
+        {
+            printf(" ");
+        }
+        for(int k = 0; k < (1 + i); k++) //print a number of # that is value of one plus the iteration
+        {
+            printf("#");
+        }
+        printf("\n");
+    }
+
+}
+
+CASH:
+Implement a program that calculates the minimum number of coins required to give a user change.
+
+$ ./cash
+Change owed: 0.41
+4
+
+SOLUTION
+#include <stdio.h>
+#include <cs50.h>
+#include <math.h>
+
+int main(void)
+{
+    float change = 0.00;
+    int coinCounter = 0;
+
+    do
+    {
+        change = get_float("How much change are you expecting back?  ");
+    }
+    while (change <= 0);
+
+    change = change * 100; // convert a decimal to a whole number (sort of, thanks floating point)
+    change = round(change); // floating point always takes something off the end, let's round back up
+
+    while (change > 0)
+    {
+        if (change >= 25)
+        {
+            change -= 25;
+            coinCounter++;
+        }
+        else if (change >= 10)
+        {
+            change -= 10;
+            coinCounter++;
+        }
+        else if (change >= 5)
+        {
+            change -= 5;
+            coinCounter++;
+        }
+        else if (change >= 1)
+        {
+            change -= 1;
+            coinCounter++;
+        }
+    }
+    // I wanted this to read, "I needed %i coins to make change." but the instructions asked for an int followed by a \n
+    printf("%i \n", coinCounter);
+}
+
+
+*****************************
+CLASS NOTES
+*****************************
+printf("hello, world\n");
+
+#include <stdio.h>   //include the standard input and output methods
+int main(void)
+{
+  printf("some text\n");
+}
+
+while(true)  // infinite loop
+{
+  printf("true");
+}
+
+for (int i-0; i < 50; i++ )  // need int because C is 'strongly' typed and we have to
+                             // tell the compiler what kind of variable we need
+{
+  printf("don't use JS curly brackets in C")
+}
+
+
+IDE for coursework: cs50.io
+login via edx
+
+$clang hello.c
+generates a new .out file
+$./a.out
+
+$clang -o hello hello.c  // clang output a file named hello when compiling hello.c
+
+command line commands: ls, cd, mkdir, rmdir
+
+C methods: printf, get_char, get_string, get_int, get_double, get_long_long, get_float
+
+#include <stdio.h>
+
+int main(void)
+{
+  string s = get_string("Name: ");
+  printf("hello, %s\n", s)
+}
+
+#include <stdio.h>
+#include <cs50.h>
+
+int main(void)
+{
+  int i = get_int("Integer: ");
+  printf("hello, %i\n", i);
+}
+
+$make int  // shortcut to compile int.c into a file
+oops, get_int isn't in C, it's a helper that was added to the IDE by the cs50 staff
+
+%i = int
+%f = float
+%.2f = float with 2 decimal places
+(don't try math using ints when expecting a float result)
+%s = string
+
+if (c = 'Y')
+{
+  printf("yes\n");
+}
+Single quotes when checking a single character, double quotes for multiple characters
+
+if (c = 'Y' || c = 'y')
+{
+  printf("yes\n");
+}
+
+switch (c)
+{
+  case 'Y':
+  case 'y':
+    printf("yes \n");
+    break;
+  case 'N':
+  case 'n':
+    printf("no \n");
+    break;
+}
+
+Video 2
+Super Mario Bros
+loop
+
+int main(void);
+{
+  for (int i = 0; i < 4; i++)
+  {
+  printf('?');  //but what about the last time?!  ;)
+  }
+  printf('\n');  Oh, there it is
+}
+
+int main(void);
+{
+  do
+  {
+    int n = get_int("Positive number");  // n is scoped only to the 'do' loop
+  }
+  while (n <= 0);
+
+  for (int i = 0; i < n; i++)
+  {
+  printf('?');  //but what about the last time?!  ;)
+  }
+  printf('\n');  Oh, there it is
+}
+
+int main(void);
+{
+  int n; // barf, make a global variable
+  do
+  {
+    n = get_int("Positive number");
+  }
+  while (n <= 0);
+
+  for (int i = 0; i < n; i++)
+  {
+  printf('?');  //but what about the last time?!  ;)
+  }
+  printf('\n');  Oh, there it is
+}
+
+OH NOES NESTED FOR LOOPS! :/
+
+int main(void);
+{
+  do
+  {
+    int n = get_int("Positive number");  // n is scoped only to the 'do' loop
+  }
+  while (n <= 0);
+
+  for (int i = 0; i < n; i++)
+  {
+    for (int j = 0; j < n; j ++)
+    {
+    printf('#');
+    }
+    printf('\n');  Oh, there it is
+  }
+}
