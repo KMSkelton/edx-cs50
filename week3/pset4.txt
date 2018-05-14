@@ -1,0 +1,64 @@
+*****************************
+PROBLEM SET
+*****************************
+
+
+
+*****************************
+CLASS NOTES
+*****************************
+MEMORY MANAGEMENT and REMOVING SYNTACTIC SUGARS...
+
+
+Array place swapping. NEED A TEMPORARY PLACEHOLDER, just like swapping gatorade from one cup to another.
+
+strings are not a thing!! CS50 created string as syntactic sugar over char *
+copy0.c fails to do the comparison as expected. compare1.c uses the same code
+but with char *
+instead of string s = get_string  we're using char *s =  get_string
+
+can't do if ( s = t ) have to pass s and t into strcmp (string compare)
+if (strcmp(s,t) == 0).  Comparing s and t is comparing their memory locations, not the values contained AT those memory locations (pointers).
+
+If a pointer is empty, it is NULL. We cannot reference a NULL pointer.
+if (s == NULL) { return something other than 0 }  // 0 means everything is fine because there is only one 0 and it's an easy reference point.
+OR
+if (!s) // if (!0)
+this can happen if we request more memory than is available
+
+char *t // declare a variable named t that stores the address of a characters
+
+malloc // memory allocation
+malloc(5) // allocate five bits of memory and return the address for user
+
+malloc((strlen(s) + 1) * sizeof(char));  // allocate memory in the amount of the length of the string 's' plus one, times the size of the data type (chars are always 1 but this is good practice.)
+
+
+for (int i =0, n = strlen(s); i < n; i++)
+{
+  printf("%c\n", *(s + i))
+}
+*(s + i) // start at s, print the i-th value. this lets the print loop through the array of characters same as s[i] does. * means go to the address
+
+
+instead of char *s = get_string("Name: "); we can use
+int main(void)
+{
+  int x;
+  printf("x: ");
+  scanf("%i", &x);  // get input from keyboard, & means store the input in the address of the variable that follows
+  printf("x: %i\n", x);
+}
+
+
+Pixels:
+BBGGRR
+hexadecimal: 0-9 a-f
+ffffff = all turned up to white
+0000ff = only red turned on
+
+for whodunit: turn 0000ff to ffffff
+padding for bitmap rows (much be a multiple of 4)
+padding = (4 - (bi.biWidth * sizeof(rbgtriple)) % 4 ) %4;
+
+BMP must start with 
