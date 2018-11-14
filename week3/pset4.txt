@@ -17,7 +17,7 @@ copy0.c fails to do the comparison as expected. compare1.c uses the same code
 but with char *
 instead of string s = get_string  we're using char *s =  get_string
 
-can't do if ( s = t ) have to pass s and t into strcmp (string compare)
+can't do if ( s = t ) have to pass s and t into strcmp (string compare) 
 if (strcmp(s,t) == 0).  Comparing s and t is comparing their memory locations, not the values contained AT those memory locations (pointers).
 
 If a pointer is empty, it is NULL. We cannot reference a NULL pointer.
@@ -38,8 +38,9 @@ for (int i =0, n = strlen(s); i < n; i++)
 {
   printf("%c\n", *(s + i))
 }
-*(s + i) // start at s, print the i-th value. this lets the print loop through the array of characters same as s[i] does. * means go to the address
-
+*(s + i) // start at s, print the i-th value. this lets the print loop through the array of characters same as s[i] does. 
+* means go to the address
+& means find the address
 
 instead of char *s = get_string("Name: "); we can use
 int main(void)

@@ -111,7 +111,8 @@ int main(void)
             coinCounter++;
         }
     }
-    // I wanted this to read, "I needed %i coins to make change." but the instructions asked for an int followed by a \n
+    // I wanted this to read, "I needed %i coins to make change." but the instructions asked for 
+    // an int followed by a \n
     printf("%i \n", coinCounter);
 }
 

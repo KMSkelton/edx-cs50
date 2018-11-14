@@ -1,0 +1,26 @@
+cs50 not about programming
+about modeling problems, data
+input -> [    ] -> outputs; algorithms go in the box
+algorithm - set of instructions to solve a problem, a recipe
+
+computers operate on binary, code represents on/off
+binary operates in 2^n instead of our typical 10^n
+2^0 = 1 (1st place to the right)
+2^1 = 2 (2nd place to the right)
+2^2 = 4 (3rd place to the right)
+2^3 = 8 (4th place to the right)
+2^4 = 16 (5th place to the right)
+
+ASCII - two digit codes for letters and punctuation
+
+"Make a sandwich" example of a machine following instructions exactly
+
+Phone book search. Linked list;
+
+scratch.mit.edu for problem set 0 .... looks like LOGO
+
+i for counting. He says it means "integer" I've heard "iterator" and "item". I've also heard that "i" was the first row on punch cards where numbers could be added.
+
+"Famous Portrait Fun" description:
+Available at https://scratch.mit.edu/projects/220015540/
+This is an interactive art piece. Pressing space activates the googly eyes, which are coded independently (though they use the same counter variable). Clicking on the bow tie increments a separate iterator, causes Joe to laugh and plays the funky music all the way through the same number of times the bow tie is clicked. I wanted the music to not restart when the tie was clicked but couldn't figure that out. There is no way to stop the music until it has completed. You're welcome.

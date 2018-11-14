@@ -1,0 +1,82 @@
+More talk about memory
+
+*****************************
+PROBLEM SET
+*****************************
+Do the Music problems... added code to git repo, too many files to include in a text file for notes
+
+
+*****************************
+CLASS NOTES
+*****************************
+
+without \0 C would not know where a string ends and printf would just print
+everything in memory
+
+Get a user's initials by taking capitalized characters
+
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main(void)
+{
+  string name = get_string("Name (in the format First Middle Last): ");
+  char initials[5];   //need to leave room for the \0 terminator as well as provide
+                      // for folks with more than 3 initials
+  for (int i = 0, j = 0; i < strlen(name); i++)
+  {
+    if (isupper(name[i]))
+    {
+    intitals[j] = name[i];
+    j++
+    }
+    initials[j] = "\0";
+  }
+}
+
+Sorting algorithms
+linear search: brute force checking each element in an array until the requested information is found
+  O(n)
+
+binary search: check middle of the array, search the side that corresponds to whether the requested info is higher (right) or lower (left) of the middle. Go to the middle of that side (left or right) and search again until the requested info is found or isn't. Data needs to be sorted.
+
+Unsorted search/Insertion sort: take each item and compare to the known array. Works like a binary search but data is placed left or right rather than retrieved.
+for i from 1 to n-1
+  call 0-th through i-1-th elements, the "sorted side"
+  remove i-th element
+  insert it into sorted side in order
+  O(log n)
+
+Compare a pair: which is larger? Bubble sort.
+Basic bubble sort:
+repeat until no swaps
+  for i from 0 to n-2
+    if i-th and i + 1-th items are out of order
+      swap them
+      O(n^2)  where he calls O "on the order of"
+
+Selection sort: track the smallest value then compare to all remaining values to the right and swap if the value is lower than current. This is the reverse of bubble sort. Bubble sort can be implemented as a selection sort.
+  for i from 0 to n-1
+    find smallest element between i-th and n-1-th
+      swap smallest with with i-th element
+
+Merge sort:
+sort the left half, then the right half and merge
+  sort the left half, then the right half and merge
+  O(n log n)
+  recursive approach because we're repeating the steps the same way on the same data
+
+  Input n elements
+  if n < 2
+    return
+  else
+    sort left half
+    sort right half
+    merge
+
+  always move left to right, comparing each value at the same index
+  2 4 5 7 | 1 3 6 8
+  2,1; 4,3; 5,6; 7,8
+  12345678
